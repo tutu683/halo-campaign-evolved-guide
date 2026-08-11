@@ -1,33 +1,40 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { SourceNote } from "@/components/source-note";
+import { missions } from "@/lib/missions";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Halo Campaign Evolved Missions List & Order",
   description:
-    "See all 13 Halo: Campaign Evolved missions in order, including the ten rebuilt Alpha Halo chapters and three Operation: METEORITE missions.",
+    "See all 13 Halo: Campaign Evolved missions in order and open spoiler-light walkthroughs for the Alpha Halo and Operation: METEORITE chapters.",
   alternates: { canonical: "/missions" },
 };
 
-const alphaHaloMissions = [
-  "The Pillar of Autumn",
-  "Halo",
-  "The Truth and Reconciliation",
-  "The Silent Cartographer",
-  "Assault on the Control Room",
-  "343 Guilty Spark",
-  "The Library",
-  "Two Betrayals",
-  "Keyes",
-  "The Maw",
-];
+const alphaHaloMissions = missions.filter((mission) => mission.arc === "Alpha Halo");
+const meteoriteMissions = missions.filter((mission) => mission.arc === "Operation: METEORITE");
 
-const meteoriteMissions = [
-  "Boarding Action",
-  "The Most Dangerous Game",
-  "Heavy Burden",
-];
+function MissionDirectory({ items }: { items: typeof missions }) {
+  return (
+    <ol className="mission-directory">
+      {items.map((mission) => (
+        <li key={mission.slug}>
+          <Link href={`/missions/${mission.slug}`}>
+            <span className="mission-number">{String(mission.order).padStart(2, "0")}</span>
+            <span>
+              <small>{mission.arc}</small>
+              <strong>{mission.title}</strong>
+              <p>{mission.description}</p>
+            </span>
+            <ArrowRight size={17} />
+          </Link>
+        </li>
+      ))}
+    </ol>
+  );
+}
 
 export default function MissionsPage() {
   return (
@@ -46,61 +53,35 @@ export default function MissionsPage() {
           <p>
             <strong>Halo: Campaign Evolved contains 13 campaign missions.</strong> Ten
             missions rebuild the full Halo: Combat Evolved story, while three additional
-            chapters form Operation: METEORITE. The remake keeps the familiar Alpha Halo
-            arc but updates level design, controls, cinematics, sound, enemy encounters,
-            vehicle interaction, and replay modifiers.
+            chapters form Operation: METEORITE.
           </p>
-
           <div className="callout">
             <p>
-              This page lists mission titles and broad placement only. Story outcomes and
-              encounter-specific spoilers are intentionally omitted.
+              Open any mission for spoiler-light objectives, loadout planning, and combat
+              advice. Unverified collectible or boss locations are not included.
             </p>
           </div>
 
           <h2 id="original-campaign">Alpha Halo campaign order</h2>
           <p>
             The main campaign follows Master Chief and Cortana from the Pillar of Autumn
-            to the discovery of the ring&apos;s true purpose. The order below matches the
-            original ten-chapter campaign rebuilt for Campaign Evolved.
+            through the original ten-chapter story rebuilt for Campaign Evolved.
           </p>
-          <ol className="mission-list">
-            {alphaHaloMissions.map((mission) => (
-              <li key={mission}>
-                <strong>{mission}</strong>
-              </li>
-            ))}
-          </ol>
+          <MissionDirectory items={alphaHaloMissions} />
 
           <h2 id="operation-meteorite">Operation: METEORITE mission order</h2>
           <p>
-            Operation: METEORITE takes place one year before Halo: Combat Evolved. Master
-            Chief and Sergeant Avery Johnson infiltrate a Covenant agricultural vessel
-            above the glassed human colony of Promise while searching for intelligence
-            that may point toward High Charity.
+            Operation: METEORITE takes place one year before Halo: Combat Evolved and
+            follows Master Chief and Sergeant Avery Johnson on a new three-mission operation.
           </p>
-          <ol className="mission-list">
-            {meteoriteMissions.map((mission) => (
-              <li key={mission}>
-                <strong>{mission}</strong>
-              </li>
-            ))}
-          </ol>
+          <MissionDirectory items={meteoriteMissions} />
 
-          <h2 id="coop">Can every mission be played in co-op?</h2>
-          <p>
-            The complete campaign supports solo play or up to four players online. Online
-            co-op works across Xbox Series X|S, PC, and PlayStation 5 with cross-play and
-            cross-progression. Console versions also support two-player split-screen.
-          </p>
-
-          <h2 id="replay">Campaign Remix and Skulls</h2>
-          <p>
-            Campaign Remix lets players return to missions with combinations of altered
-            enemies, weapons, visual effects, and Skulls. These modifiers are designed to
-            change how encounters play rather than simply raising enemy health, making a
-            second run structurally different from the first.
-          </p>
+          <h2 id="more-guides">Plan the rest of your run</h2>
+          <div className="related-links">
+            <Link href="/guides/campaign-length">Estimate campaign length <ArrowRight size={15} /></Link>
+            <Link href="/guides/coop-crossplay">Set up online co-op <ArrowRight size={15} /></Link>
+            <Link href="/guides/legendary-difficulty">Prepare for Legendary <ArrowRight size={15} /></Link>
+          </div>
 
           <SourceNote
             sources={[
@@ -115,12 +96,10 @@ export default function MissionsPage() {
             <a href="#overview">Mission count</a>
             <a href="#original-campaign">Alpha Halo order</a>
             <a href="#operation-meteorite">Operation: METEORITE</a>
-            <a href="#coop">Co-op support</a>
-            <a href="#replay">Replay modifiers</a>
+            <a href="#more-guides">More guides</a>
           </nav>
         </aside>
       </div>
     </>
   );
 }
-

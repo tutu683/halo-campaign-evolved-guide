@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import { StructuredData } from "@/components/structured-data";
 import { guideCards, siteConfig } from "@/lib/site";
 
 const homeFaq = [
@@ -37,30 +38,17 @@ const homeFaq = [
 export default function Home() {
   const schema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        name: siteConfig.name,
-        url: siteConfig.url,
-        description: siteConfig.description,
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: homeFaq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-      },
-    ],
+    "@type": "FAQPage",
+    mainEntity: homeFaq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <StructuredData data={schema} />
 
       <section className="hero">
         <Image
@@ -147,6 +135,11 @@ export default function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+          <div className="section-action">
+            <Link className="button-secondary" href="/guides">
+              Browse all player guides <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

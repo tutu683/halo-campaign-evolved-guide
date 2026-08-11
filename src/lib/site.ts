@@ -3,8 +3,8 @@ export const siteConfig = {
   shortName: "Campaign Evolved Guide",
   description:
     "An independent Halo: Campaign Evolved guide covering missions, weapons, PC requirements, co-op, release details, and verified updates.",
-  url: "https://halo-campaign-evolved.online",
-  updated: "July 30, 2026",
+  url: "https://www.halo-campaign-evolved.online",
+  updated: "August 11, 2026",
   officialUrl: "https://www.halowaypoint.com/halo-campaign-evolved",
   steamUrl: "https://store.steampowered.com/app/2806050/Halo_Campaign_Evolved/",
   xboxUrl: "https://www.xbox.com/en-US/games/halo-campaign-evolved",
@@ -15,6 +15,7 @@ export const siteConfig = {
 export const primaryNavigation = [
   { href: "/missions", label: "Missions" },
   { href: "/weapons", label: "Weapons" },
+  { href: "/guides", label: "Guides" },
   { href: "/system-requirements", label: "PC Specs" },
   { href: "/release-date", label: "Release" },
 ];
@@ -47,5 +48,12 @@ export const guideCards = [
     title: "Platforms and editions",
     description:
       "Check the release date, supported platforms, co-op options, pricing, and official store links.",
+  },
+  {
+    href: "/guides",
+    eyebrow: "Player answers",
+    title: "Co-op, difficulty, and replay guides",
+    description:
+      "Get focused answers for campaign length, split-screen, cross-play, Legendary, Campaign Remix, and editions.",
   },
 ];

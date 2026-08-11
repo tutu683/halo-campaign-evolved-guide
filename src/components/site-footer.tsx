@@ -13,6 +13,8 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="footer-links" aria-label="Site information">
+          <Link href="/missions">Missions</Link>
+          <Link href="/guides">Guides</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy-policy">Privacy</Link>
@@ -31,4 +33,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
