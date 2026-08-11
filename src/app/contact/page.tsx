@@ -16,8 +16,8 @@ export default function ContactPage() {
           <p>
             Send the page URL, the statement that needs review, and a public source that
             supports the correction to{" "}
-            <a href="mailto:contact@halocampaignevolvedguide.com">
-              contact@halocampaignevolvedguide.com
+            <a href="mailto:contact@halo-campaign-evolved.online">
+              contact@halo-campaign-evolved.online
             </a>.
           </p>
           <p>
@@ -30,4 +30,3 @@ export default function ContactPage() {
     </section>
   );
 }
-

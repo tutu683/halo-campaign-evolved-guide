@@ -33,5 +33,5 @@ official facts or game systems change.
 ## Deployment
 
 Push the repository to GitHub, import it into Vercel, and bind the production
-domain `halocampaignevolvedguide.com`. Update `siteConfig.url` in
+domain `halo-campaign-evolved.online`. Update `siteConfig.url` in
 `src/lib/site.ts` if the production domain changes.

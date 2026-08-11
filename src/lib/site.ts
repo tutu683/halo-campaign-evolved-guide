@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Campaign Evolved Guide",
   description:
     "An independent Halo: Campaign Evolved guide covering missions, weapons, PC requirements, co-op, release details, and verified updates.",
-  url: "https://halocampaignevolvedguide.com",
+  url: "https://halo-campaign-evolved.online",
   updated: "July 30, 2026",
   officialUrl: "https://www.halowaypoint.com/halo-campaign-evolved",
   steamUrl: "https://store.steampowered.com/app/2806050/Halo_Campaign_Evolved/",
@@ -49,4 +49,3 @@ export const guideCards = [
       "Check the release date, supported platforms, co-op options, pricing, and official store links.",
   },
 ];
-

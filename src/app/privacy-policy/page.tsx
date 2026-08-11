@@ -34,8 +34,8 @@ export default function PrivacyPage() {
           <h2>Contact</h2>
           <p>
             Privacy and rights-holder questions can be sent to{" "}
-            <a href="mailto:contact@halocampaignevolvedguide.com">
-              contact@halocampaignevolvedguide.com
+            <a href="mailto:contact@halo-campaign-evolved.online">
+              contact@halo-campaign-evolved.online
             </a>.
           </p>
         </div>
@@ -43,4 +43,3 @@ export default function PrivacyPage() {
     </section>
   );
 }
-
