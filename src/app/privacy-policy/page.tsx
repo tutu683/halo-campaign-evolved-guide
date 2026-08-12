@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <section className="simple-page">
       <div className="shell">
-        <p className="eyebrow">Privacy policy / July 30, 2026</p>
+        <p className="eyebrow">Privacy policy / August 12, 2026</p>
         <h1>A content site with minimal data collection.</h1>
         <div className="simple-copy">
           <h2>Information collected</h2>
@@ -22,8 +22,11 @@ export default function PrivacyPage() {
           </p>
           <h2>Analytics and cookies</h2>
           <p>
-            Privacy-conscious aggregate analytics may be added to understand page traffic.
-            This policy will be updated before advertising or additional tracking is enabled.
+            This site uses Vercel Web Analytics and Speed Insights to understand aggregate
+            page traffic, referral sources, device and browser categories, and site
+            performance. These services help identify useful guides and technical issues.
+            We do not use analytics to collect names, email addresses, payment details, or
+            account credentials.
           </p>
           <h2>External links</h2>
           <p>
