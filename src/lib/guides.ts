@@ -1,6 +1,7 @@
 export type PlayerGuide = {
   slug: string;
   title: string;
+  seoTitle?: string;
   eyebrow: string;
   description: string;
   quickAnswer: string;
@@ -127,10 +128,11 @@ export const guides: PlayerGuide[] = [
   },
   {
     slug: "split-screen",
-    title: "Halo: Campaign Evolved Split-Screen Guide",
+    title: "Halo: Campaign Evolved Local Co-op & Split-Screen Guide",
+    seoTitle: "Halo Campaign Evolved Local Co-op & Split-Screen",
     eyebrow: "Local co-op",
     description:
-      "Check Halo: Campaign Evolved split-screen player limits, supported console versions, and the difference between local and online co-op.",
+      "Check Halo: Campaign Evolved local co-op and split-screen support, player limits, console availability, and how local play differs from online co-op.",
     quickAnswer:
       "Console versions of Halo: Campaign Evolved support two-player split-screen campaign co-op. Online co-op supports up to four players, so local and online player limits are different.",
     image: "/media/coop.jpg",
@@ -138,9 +140,9 @@ export const guides: PlayerGuide[] = [
     sections: [
       {
         id: "support",
-        heading: "Which versions support split-screen?",
+        heading: "Does Halo: Campaign Evolved have local co-op?",
         paragraphs: [
-          "Official product information identifies two-player split-screen for console versions. Do not assume that the four-player online limit also applies to one console.",
+          "Yes. Official product information identifies two-player local split-screen campaign co-op for console versions. Two people can play on the same console and display, but the four-player online limit does not apply to one console.",
           "PC storefront wording should be checked separately because local split-screen support is not interchangeable with online co-op support.",
         ],
       },
@@ -166,6 +168,10 @@ export const guides: PlayerGuide[] = [
     ],
     faq: [
       {
+        question: "Does Halo: Campaign Evolved have local co-op?",
+        answer: "Yes. Console versions support two-player local split-screen campaign co-op.",
+      },
+      {
         question: "How many players can use split-screen?",
         answer: "Console versions support two-player split-screen campaign co-op.",
       },
@@ -176,7 +182,70 @@ export const guides: PlayerGuide[] = [
     ],
     related: [
       { href: "/guides/coop-crossplay", label: "Compare online co-op and cross-play" },
+      { href: "/missions", label: "Choose a mission for local co-op" },
       { href: "/system-requirements", label: "Review PC requirements" },
+    ],
+  },
+  {
+    slug: "sergeant-johnson-missions",
+    title: "Sergeant Johnson Missions in Halo: Campaign Evolved",
+    seoTitle: "Halo Campaign Evolved Sergeant Johnson Missions",
+    eyebrow: "Johnson missions",
+    description:
+      "See the three Halo: Campaign Evolved Sergeant Johnson missions in order and learn where Operation: METEORITE fits into the 13-mission campaign.",
+    quickAnswer:
+      "Sergeant Avery Johnson joins Master Chief in the three-mission Operation: METEORITE prequel: Boarding Action, The Most Dangerous Game, and Heavy Burden. They are missions 11 through 13 in the complete campaign order used by this guide.",
+    image: "/media/operation-meteorite.jpg",
+    imageAlt: "Master Chief and Sergeant Johnson in Operation Meteorite",
+    sections: [
+      {
+        id: "mission-list",
+        heading: "Sergeant Johnson missions in order",
+        paragraphs: [
+          "Operation: METEORITE is a three-part story featuring Master Chief and Sergeant Avery Johnson. In the complete 13-mission sequence, the prequel chapters follow the ten rebuilt Alpha Halo missions.",
+        ],
+        bullets: [
+          "Mission 11: Boarding Action",
+          "Mission 12: The Most Dangerous Game",
+          "Mission 13: Heavy Burden",
+        ],
+      },
+      {
+        id: "campaign-order",
+        heading: "Where Operation: METEORITE fits",
+        paragraphs: [
+          "The Operation: METEORITE story is set one year before Halo: Combat Evolved. The guide lists it after the rebuilt Alpha Halo campaign so the main story order remains easy to follow while the three new missions stay grouped together.",
+          "Players who prefer story chronology can treat METEORITE as a prequel. Players following the in-game campaign index can use the full mission directory to confirm the available order.",
+        ],
+      },
+      {
+        id: "confirmed-details",
+        heading: "What is confirmed about Johnson's role?",
+        paragraphs: [
+          "Official product material pairs Sergeant Johnson with Master Chief in Operation: METEORITE. That confirms his story role in the three-mission arc, but it should not be used to invent mission objectives, dialogue, collectibles, or playable-character options.",
+          "The linked mission pages separate confirmed campaign placement from practical, spoiler-light preparation. Encounter details are only added when they can be checked against the released game or an official source.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Which Halo: Campaign Evolved missions feature Sergeant Johnson?",
+        answer: "Sergeant Johnson appears in the three Operation: METEORITE missions: Boarding Action, The Most Dangerous Game, and Heavy Burden.",
+      },
+      {
+        question: "How many Sergeant Johnson missions are there?",
+        answer: "There are three missions in the Operation: METEORITE arc.",
+      },
+      {
+        question: "Are the Johnson missions part of the original Alpha Halo campaign?",
+        answer: "No. Operation: METEORITE is a new prequel arc set one year before Halo: Combat Evolved and is separate from the ten rebuilt Alpha Halo missions.",
+      },
+    ],
+    related: [
+      { href: "/missions", label: "See the complete mission order" },
+      { href: "/missions/boarding-action", label: "Open the Boarding Action guide" },
+      { href: "/missions/the-most-dangerous-game", label: "Open The Most Dangerous Game guide" },
+      { href: "/missions/heavy-burden", label: "Open the Heavy Burden guide" },
     ],
   },
   {

@@ -4,7 +4,8 @@ export const siteConfig = {
   description:
     "An independent Halo: Campaign Evolved guide covering missions, weapons, PC requirements, co-op, release details, and verified updates.",
   url: "https://www.halo-campaign-evolved.online",
-  updated: "August 11, 2026",
+  updated: "August 14, 2026",
+  updatedIso: "2026-08-14",
   officialUrl: "https://www.halowaypoint.com/halo-campaign-evolved",
   steamUrl: "https://store.steampowered.com/app/2806050/Halo_Campaign_Evolved/",
   xboxUrl: "https://www.xbox.com/en-US/games/halo-campaign-evolved",
@@ -50,10 +51,17 @@ export const guideCards = [
       "Check the release date, supported platforms, co-op options, pricing, and official store links.",
   },
   {
-    href: "/guides",
-    eyebrow: "Player answers",
-    title: "Co-op, difficulty, and replay guides",
+    href: "/guides/split-screen",
+    eyebrow: "Local co-op",
+    title: "Split-screen support",
     description:
-      "Get focused answers for campaign length, split-screen, cross-play, Legendary, Campaign Remix, and editions.",
+      "Check the two-player local co-op limit, supported console versions, and how split-screen differs from online co-op.",
+  },
+  {
+    href: "/guides/sergeant-johnson-missions",
+    eyebrow: "Operation: METEORITE",
+    title: "Sergeant Johnson missions",
+    description:
+      "See the three Johnson missions in order and where the prequel fits into the complete 13-mission campaign.",
   },
 ];

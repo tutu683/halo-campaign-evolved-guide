@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
 
   const path = `/guides/${guide.slug}`;
   return {
-    title: guide.title,
+    title: guide.seoTitle ? { absolute: guide.seoTitle } : guide.title,
     description: guide.description,
     alternates: { canonical: path },
     openGraph: {
       type: "article",
       url: path,
-      title: guide.title,
+      title: guide.seoTitle ?? guide.title,
       description: guide.description,
       images: [{ url: guide.image, width: 1920, height: 1080, alt: guide.imageAlt }],
     },
@@ -48,7 +48,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         description: guide.description,
         image: `${siteConfig.url}${guide.image}`,
         datePublished: "2026-08-11",
-        dateModified: "2026-08-11",
+        dateModified: siteConfig.updatedIso,
         mainEntityOfPage: pageUrl,
         author: { "@id": `${siteConfig.url}/#organization` },
         publisher: { "@id": `${siteConfig.url}/#organization` },

@@ -71,7 +71,7 @@ export default async function MissionPage({ params }: MissionPageProps) {
         description: mission.description,
         image: `${siteConfig.url}${mission.image}`,
         datePublished: "2026-08-11",
-        dateModified: "2026-08-11",
+        dateModified: siteConfig.updatedIso,
         mainEntityOfPage: pageUrl,
         author: { "@id": `${siteConfig.url}/#organization` },
         publisher: { "@id": `${siteConfig.url}/#organization` },
@@ -159,6 +159,17 @@ export default async function MissionPage({ params }: MissionPageProps) {
             ))}
           </div>
 
+          <h2 id="related">Related campaign guides</h2>
+          <div className="related-links">
+            <Link href="/missions">See all 13 missions in order <ArrowRight size={15} /></Link>
+            {mission.arc === "Operation: METEORITE" ? (
+              <Link href="/guides/sergeant-johnson-missions">Sergeant Johnson missions guide <ArrowRight size={15} /></Link>
+            ) : (
+              <Link href="/guides/campaign-length">Campaign length guide <ArrowRight size={15} /></Link>
+            )}
+            <Link href="/guides/split-screen">Local co-op and split-screen <ArrowRight size={15} /></Link>
+          </div>
+
           <nav className="article-pagination" aria-label="Mission guide navigation">
             {previousMission ? (
               <Link href={`/missions/${previousMission.slug}`}>
@@ -189,6 +200,7 @@ export default async function MissionPage({ params }: MissionPageProps) {
             <a href="#tips">Combat tips</a>
             <a href="#verification">Verification</a>
             <a href="#faq">FAQ</a>
+            <a href="#related">Related guides</a>
           </nav>
         </aside>
       </div>
