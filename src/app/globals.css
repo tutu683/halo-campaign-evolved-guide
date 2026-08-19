@@ -688,6 +688,190 @@ img {
   line-height: 1.5;
 }
 
+.mission-checklist {
+  margin: 24px 0 44px;
+  border: 1px solid var(--line);
+  background: var(--black);
+}
+
+.mission-checklist-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 34px;
+  align-items: end;
+  padding: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mission-checklist-header h3 {
+  margin: 5px 0 8px;
+}
+
+.mission-checklist-header p {
+  max-width: 620px;
+  margin: 0;
+}
+
+.mission-checklist-kicker {
+  color: var(--green-strong) !important;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mission-progress-summary {
+  display: grid;
+  gap: 10px;
+}
+
+.mission-progress-summary strong {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.mission-progress-track {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.mission-progress-track span {
+  display: block;
+  height: 100%;
+  background: var(--green-strong);
+  transition: width 180ms ease;
+}
+
+.mission-progress-summary button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.mission-progress-summary button:hover:not(:disabled) {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.mission-progress-summary button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.mission-checklist-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mission-checklist-list li {
+  display: grid;
+  min-height: 72px;
+  grid-template-columns: minmax(0, 1fr) 46px;
+  align-items: stretch;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.mission-checklist-list li:nth-child(2n) {
+  border-right: 0;
+}
+
+.mission-checklist-list li:last-child:nth-child(odd) {
+  border-bottom: 0;
+}
+
+.mission-checklist-list label {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+}
+
+.mission-checklist-list input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.mission-checkbox {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border: 1px solid #657068;
+  color: transparent;
+}
+
+.mission-checklist-list input:focus-visible + .mission-checkbox {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.mission-checklist-list .is-complete .mission-checkbox {
+  border-color: var(--green-strong);
+  background: var(--green-strong);
+  color: var(--black);
+}
+
+.mission-checklist-copy {
+  min-width: 0;
+}
+
+.mission-checklist-copy small,
+.mission-checklist-copy strong {
+  display: block;
+}
+
+.mission-checklist-copy small {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.61rem;
+  text-transform: uppercase;
+}
+
+.mission-checklist-copy strong {
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+.mission-checklist-list .is-complete .mission-checklist-copy strong {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.mission-checklist-list li > a {
+  display: grid;
+  width: 46px;
+  min-height: 46px;
+  place-items: center;
+  border-left: 1px solid var(--line);
+  color: var(--green-strong) !important;
+  text-decoration: none !important;
+}
+
+.mission-checklist-list li > a:hover {
+  background: var(--surface-2);
+  color: var(--cyan) !important;
+}
+
 .directory-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -993,6 +1177,10 @@ img {
     position: static;
     order: -1;
   }
+
+  .mission-checklist-header {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1082,6 +1270,25 @@ img {
 
   .mission-directory p {
     display: none;
+  }
+
+  .mission-checklist-header {
+    gap: 22px;
+    padding: 22px 18px;
+  }
+
+  .mission-checklist-list {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-checklist-list li,
+  .mission-checklist-list li:nth-child(2n) {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mission-checklist-list li:last-child {
+    border-bottom: 0;
   }
 
   .data-table {

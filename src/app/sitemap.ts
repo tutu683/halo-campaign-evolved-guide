@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const originalDate = new Date("2026-08-11");
   const currentDate = new Date(siteConfig.updatedIso);
+  const missionsDate = new Date("2026-08-17");
   const updatedRoutes = new Set([
     "",
     "/missions",
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...routes, ...contentRoutes].map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: updatedRoutes.has(route) ? currentDate : originalDate,
+    lastModified: route === "/missions" ? missionsDate : updatedRoutes.has(route) ? currentDate : originalDate,
     changeFrequency: route === "" ? "daily" : "weekly",
     priority: route === "" ? 1 : route.startsWith("/privacy") ? 0.2 : route.split("/").length > 2 ? 0.7 : 0.8,
   }));

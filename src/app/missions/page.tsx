@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { MissionChecklist } from "@/components/mission-checklist";
 import { PageHero } from "@/components/page-hero";
 import { SourceNote } from "@/components/source-note";
 import { StructuredData } from "@/components/structured-data";
@@ -10,7 +11,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Halo Campaign Evolved Missions List & Order" },
   description:
-    "See all 13 Halo: Campaign Evolved missions in order and open spoiler-light walkthroughs for the Alpha Halo and Operation: METEORITE chapters.",
+    "See all 13 Halo: Campaign Evolved missions, chapters, and levels in order, then track progress and open spoiler-light walkthroughs for every campaign mission.",
   alternates: { canonical: "/missions" },
 };
 
@@ -27,7 +28,18 @@ const missionFaq = [
     question: "Does Halo: Campaign Evolved support local co-op?",
     answer: "Console versions support two-player local split-screen campaign co-op. Online co-op supports up to four players.",
   },
+  {
+    question: "What order should I play the Halo: Campaign Evolved missions?",
+    answer: "Follow the ten rebuilt Alpha Halo missions from The Pillar of Autumn through The Maw, followed by the three Operation: METEORITE missions listed in this guide.",
+  },
+  {
+    question: "Are missions, chapters, and levels the same in Halo: Campaign Evolved?",
+    answer: "Players often use missions, chapters, and levels interchangeably when referring to the 13 playable campaign entries. This guide uses mission as the primary term.",
+  },
 ];
+
+const missionsUpdated = "August 17, 2026";
+const missionsUpdatedIso = "2026-08-17";
 
 const alphaHaloMissions = missions.filter((mission) => mission.arc === "Alpha Halo");
 const meteoriteMissions = missions.filter((mission) => mission.arc === "Operation: METEORITE");
@@ -62,6 +74,7 @@ export default function MissionsPage() {
         name: "Halo Campaign Evolved Missions List & Order",
         description: metadata.description,
         url: pageUrl,
+        dateModified: missionsUpdatedIso,
         isPartOf: { "@id": `${siteConfig.url}/#website` },
         mainEntity: { "@id": `${pageUrl}/#mission-list` },
       },
@@ -96,7 +109,7 @@ export default function MissionsPage() {
         description="The complete 13-mission structure: ten rebuilt chapters on Alpha Halo and a new three-part prequel starring Master Chief and Sergeant Johnson."
         image="/media/operation-meteorite.jpg"
         imageAlt="Master Chief and Sergeant Johnson during Operation Meteorite"
-        meta={`Last reviewed ${siteConfig.updated}`}
+        meta={`Last reviewed ${missionsUpdated}`}
       />
       <div className="shell article-shell">
         <article className="article">
@@ -116,9 +129,18 @@ export default function MissionsPage() {
           <h2 id="mission-order">Halo: Campaign Evolved mission order</h2>
           <p>
             The numbered list below is the complete mission order used throughout this
-            guide. The first ten chapters cover Alpha Halo, followed by the three-part
-            Operation: METEORITE group.
+            guide. Players also search for these entries as chapters or levels. The first
+            ten cover Alpha Halo, followed by the three-part Operation: METEORITE group.
           </p>
+
+          <h2 id="progress">Campaign mission checklist</h2>
+          <p>
+            Use the local checklist to keep your place without creating an account. Each
+            mission name also opens its spoiler-light objectives and combat guide.
+          </p>
+          <MissionChecklist
+            missions={missions.map(({ slug, title, order, arc }) => ({ slug, title, order, arc }))}
+          />
 
           <h2 id="original-campaign">Alpha Halo campaign order</h2>
           <p>
@@ -170,6 +192,7 @@ export default function MissionsPage() {
           <nav>
             <a href="#overview">Mission count</a>
             <a href="#mission-order">Complete order</a>
+            <a href="#progress">Progress checklist</a>
             <a href="#original-campaign">Alpha Halo order</a>
             <a href="#operation-meteorite">Operation: METEORITE</a>
             <a href="#faq">FAQ</a>
