@@ -2,6 +2,12 @@
 
 An independent, English-language guide site for Halo: Campaign Evolved.
 
+**Live guide:** [halo-campaign-evolved.online](https://www.halo-campaign-evolved.online/)
+
+Browse the [complete 13-mission order](https://www.halo-campaign-evolved.online/missions),
+the [expanded weapons list](https://www.halo-campaign-evolved.online/weapons), and the
+[local split-screen guide](https://www.halo-campaign-evolved.online/guides/split-screen).
+
 ## Run locally
 
 ```bash
