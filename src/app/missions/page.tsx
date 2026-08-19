@@ -9,9 +9,9 @@ import { missions } from "@/lib/missions";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Halo Campaign Evolved Missions List & Order" },
+  title: { absolute: "Halo Campaign Evolved Missions: All 13 in Order" },
   description:
-    "See all 13 Halo: Campaign Evolved missions, chapters, and levels in order, then track progress and open spoiler-light walkthroughs for every campaign mission.",
+    "Find all 13 Halo: Campaign Evolved missions in order, including 10 Alpha Halo chapters and 3 Operation: METEORITE levels. Track progress and open guides.",
   alternates: { canonical: "/missions" },
 };
 
@@ -38,8 +38,8 @@ const missionFaq = [
   },
 ];
 
-const missionsUpdated = "August 17, 2026";
-const missionsUpdatedIso = "2026-08-17";
+const missionsUpdated = "August 19, 2026";
+const missionsUpdatedIso = "2026-08-19";
 
 const alphaHaloMissions = missions.filter((mission) => mission.arc === "Alpha Halo");
 const meteoriteMissions = missions.filter((mission) => mission.arc === "Operation: METEORITE");
@@ -71,7 +71,7 @@ export default function MissionsPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Halo Campaign Evolved Missions List & Order",
+        name: "Halo Campaign Evolved Missions: All 13 in Order",
         description: metadata.description,
         url: pageUrl,
         dateModified: missionsUpdatedIso,

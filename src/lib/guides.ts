@@ -7,6 +7,8 @@ export type PlayerGuide = {
   quickAnswer: string;
   image: string;
   imageAlt: string;
+  updated?: string;
+  updatedIso?: string;
   sections: {
     id: string;
     heading: string;
@@ -129,14 +131,16 @@ export const guides: PlayerGuide[] = [
   {
     slug: "split-screen",
     title: "Halo: Campaign Evolved Local Co-op & Split-Screen Guide",
-    seoTitle: "Halo Campaign Evolved Local Co-op & Split-Screen",
+    seoTitle: "Does Halo Campaign Evolved Have Split-Screen Co-op?",
     eyebrow: "Local co-op",
     description:
-      "Check Halo: Campaign Evolved local co-op and split-screen support, player limits, console availability, and how local play differs from online co-op.",
+      "Yes. Halo: Campaign Evolved supports 2-player split-screen co-op on consoles. See player limits, PC availability, setup, and online co-op differences.",
     quickAnswer:
       "Console versions of Halo: Campaign Evolved support two-player split-screen campaign co-op. Online co-op supports up to four players, so local and online player limits are different.",
     image: "/media/coop.jpg",
     imageAlt: "Two players in Halo Campaign Evolved co-op",
+    updated: "August 19, 2026",
+    updatedIso: "2026-08-19",
     sections: [
       {
         id: "support",

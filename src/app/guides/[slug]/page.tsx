@@ -39,6 +39,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (!guide) notFound();
 
   const pageUrl = `${siteConfig.url}/guides/${guide.slug}`;
+  const updated = guide.updated ?? siteConfig.updated;
+  const updatedIso = guide.updatedIso ?? siteConfig.updatedIso;
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -48,7 +50,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         description: guide.description,
         image: `${siteConfig.url}${guide.image}`,
         datePublished: "2026-08-11",
-        dateModified: siteConfig.updatedIso,
+        dateModified: updatedIso,
         mainEntityOfPage: pageUrl,
         author: { "@id": `${siteConfig.url}/#organization` },
         publisher: { "@id": `${siteConfig.url}/#organization` },
@@ -82,7 +84,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         description={guide.description}
         image={guide.image}
         imageAlt={guide.imageAlt}
-        meta={`Last reviewed ${siteConfig.updated}`}
+        meta={`Last reviewed ${updated}`}
       />
       <div className="shell breadcrumbs-shell">
         <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }, { label: guide.title }]} />

@@ -1,14 +1,39 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PageHero } from "@/components/page-hero";
 import { SourceNote } from "@/components/source-note";
+import { StructuredData } from "@/components/structured-data";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Halo Campaign Evolved Weapons & Expanded Arsenal",
+  title: { absolute: "Halo Campaign Evolved Weapons List & New Guns" },
   description:
-    "A practical Halo: Campaign Evolved weapons guide covering the classic Combat Evolved arsenal and confirmed additions such as the Energy Sword and Battle Rifle.",
+    "See the Halo: Campaign Evolved weapons list, returning Combat Evolved guns, and confirmed new additions including the Energy Sword and Battle Rifle.",
   alternates: { canonical: "/weapons" },
 };
+
+const weaponsUpdated = "August 19, 2026";
+const weaponsUpdatedIso = "2026-08-19";
+
+const weaponsFaq = [
+  {
+    question: "How many additional weapons are in Halo: Campaign Evolved?",
+    answer:
+      "Halo Studios says the expanded campaign includes nine additional weapons from across the Halo series alongside the returning Combat Evolved arsenal.",
+  },
+  {
+    question: "Which new weapons are confirmed for Halo: Campaign Evolved?",
+    answer:
+      "Official Halo material specifically names the Energy Sword, Battle Rifle, Needle Rifle, and Brute Plasma Rifle among the additions.",
+  },
+  {
+    question: "Does Halo: Campaign Evolved keep the original weapon sandbox?",
+    answer:
+      "Yes. Official descriptions say the iconic Combat Evolved weapons return while the campaign adds nine weapons from later Halo games.",
+  },
+];
 
 const classicWeapons = [
   ["M6D Pistol", "Precision sidearm", "Accurate headshots and controlled mid-range fire"],
@@ -22,18 +47,65 @@ const classicWeapons = [
 ];
 
 export default function WeaponsPage() {
+  const pageUrl = `${siteConfig.url}/weapons`;
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: "Halo Campaign Evolved Weapons List & New Guns",
+        description: metadata.description,
+        image: `${siteConfig.url}/media/arsenal.jpg`,
+        datePublished: "2026-08-11",
+        dateModified: weaponsUpdatedIso,
+        mainEntityOfPage: pageUrl,
+        author: { "@id": `${siteConfig.url}/#organization` },
+        publisher: { "@id": `${siteConfig.url}/#organization` },
+        isPartOf: { "@id": `${siteConfig.url}/#website` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
+          { "@type": "ListItem", position: 2, name: "Weapons", item: pageUrl },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: weaponsFaq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      },
+    ],
+  };
+
   return (
     <>
+      <StructuredData data={schema} />
       <PageHero
         eyebrow="Combat reference / Arsenal"
         title="Halo: Campaign Evolved weapons guide"
         description="The complete original sandbox returns with nine additional weapons from across the Halo series. This page separates confirmed additions from the classic kit."
         image="/media/arsenal.jpg"
         imageAlt="Master Chief using the expanded Halo Campaign Evolved arsenal"
-        meta={`Last reviewed ${siteConfig.updated}`}
+        meta={`Last reviewed ${weaponsUpdated}`}
       />
+      <div className="shell breadcrumbs-shell">
+        <Breadcrumbs items={[{ href: "/", label: "Home" }, { label: "Weapons" }]} />
+      </div>
       <div className="shell article-shell">
         <article className="article">
+          <div className="quick-answer">
+            <strong>Quick answer</strong>
+            <p>
+              The classic Combat Evolved arsenal returns with nine additional weapons.
+              Confirmed additions include the Energy Sword, Battle Rifle, Needle Rifle,
+              and Brute Plasma Rifle.
+            </p>
+          </div>
+
           <h2 id="overview">What changed in the weapon sandbox?</h2>
           <p>
             Halo Studios says Campaign Evolved includes every iconic weapon from the
@@ -94,6 +166,23 @@ export default function WeaponsPage() {
             knowledge as a set of roles rather than relying on one memorized pickup route.
           </p>
 
+          <h2 id="faq">Halo: Campaign Evolved weapons FAQ</h2>
+          <div className="faq-list">
+            {weaponsFaq.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+
+          <h2 id="related">Use the arsenal in the campaign</h2>
+          <div className="related-links">
+            <Link href="/missions">Open the complete mission list <ArrowRight size={15} /></Link>
+            <Link href="/guides/legendary-difficulty">Prepare for Legendary difficulty <ArrowRight size={15} /></Link>
+            <Link href="/guides/skulls-and-campaign-remix">Understand Campaign Remix <ArrowRight size={15} /></Link>
+          </div>
+
           <SourceNote sources={[{ label: "Halo Waypoint", href: siteConfig.officialUrl }]} />
         </article>
         <aside className="article-sidebar">
@@ -103,10 +192,11 @@ export default function WeaponsPage() {
             <a href="#confirmed-additions">Confirmed additions</a>
             <a href="#classic-weapons">Classic arsenal</a>
             <a href="#combat-basics">Combat rules</a>
+            <a href="#faq">FAQ</a>
+            <a href="#related">Related guides</a>
           </nav>
         </aside>
       </div>
     </>
   );
 }
-
